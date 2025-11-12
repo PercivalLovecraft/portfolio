@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub Nowakowski - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            border-color: #60a5fa;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+        }
+
+        .project-card:hover {
+            border-color: #60a5fa;
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .project-card p {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* About Me Section */
+        .about-me {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #60a5fa, #a78bfa);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .about-card p {
+            color: #e2e8f0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .quote {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #60a5fa;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header fade-in">
+            <h1>Jakub Nowakowski</h1>
+            <p>Junior Python & AI Developer</p>
+            <div class="social-links">
+                <a href="mailto:kuba.ipad@gmail.com" title="Kliknij aby wysłać email" onclick="copyEmail()">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/PercivalLovecraft" target="_blank"
+                    title="Mój GitHub - otwiera się w nowej karcie">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jakub-nowakowski-a302a1376/" target="_blank"
+                    title="Mój LinkedIn - otwiera się w nowej karcie">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                </a>
+                <a href="javascript:void(0)" onclick="copyPhone()" title="Kliknij aby skopiować numer">
+                    <i class="fas fa-phone"></i>
+                </a>
+                </a>
+
+            </div>
+
+
+
+            <style>
+                .social-links a {
+                    position: relative;
+                }
+
+                .social-links a:hover::after {
+                    content: attr(title);
+                    position: absolute;
+                    bottom: -40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                    white-space: nowrap;
+                    z-index: 1000;
+                }
+            </style>
+        </header>
+
+        <!-- Skills Section -->
+        <section class="fade-in">
+            <h2>Umiejętności</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>C++</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>C#</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Blockchain</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Git</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Linux</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>TensorFlow</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>OpenSSL</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Unity</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>PHP</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="fade-in">
+            <h2>Projekty</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>MyCoin</h3>
+                    <p>Własna kryptowaluta w C++ z funkcjami stateless verification i zk-rollup. Projekt badawczy i
+                        eksperymentalny blockchain.</p>
+                    <a href="https://github.com/PercivalLovecraft/coin" target="_blank" class="btn">
+                        <i class="fab fa-github"></i> Zobacz na GitHubie
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Forest Wizzard</h3>
+                    <p>Gra 2D w Unity w stylu pixel-art, w której bohater Artiom ucieka z lochów zamku. Projekt
+                        uczelniany z pełną logiką rozgrywki i menu.</p>
+                    <a href="https://github.com/PercivalLovecraft/Forest-wizzard" target="_blank" class="btn">
+                        <i class="fab fa-github"></i> Zobacz na GitHubie
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="fade-in">
+            <h2>O mnie</h2>
+            <div class="about-me">
+                <div class="about-card">
+                    <p> Jestem pasjonatem technologii z ugruntowanym doświadczeniem w programowaniu
+                        niskopoziomowym (C++) oraz nowoczesnych rozwiązaniach AI i blockchain.
+                        Moja ścieżka rozwoju obejmuje zarówno teoretyczne podstawy systemów distributed,
+                        jak i praktyczną implementację innowacyjnych projektów.</p>
+
+                    <p> Specjalizuję się w tworzeniu wydajnych rozwiązań,
+                        od kryptowalut po algorytmy machine learning, zawsze z
+                        naciskiem na czysty kod i optymalizację. W wolnym czasie eksperymentuję
+                        z nowymi frameworkami i badam granice możliwości współczesnych systemów komputerowych.</p>
+
+                    <p> Jestem programistą z zamiłowaniem do technologii i natury. Po godzinach
+                        kodzenia odnajduję równowagę w ogrodzie, gdzie jako pasjonat ogrodnictwa hoduję własne warzywa i
+                        zioła.
+                        Uwielbiam zagłębiać się w książki, słuchać klasycznych hitów z lat 80-90, a
+                        wieczorami odpoczywam przy grach PC. W kuchni eksperymentuję z nowymi przepisami,
+                        łącząc precyzję programisty z kreatywnością kucharza.
+                        Wierzę, że najlepsze pomysły przychodzą, gdy umysł odpoczywa -
+                        czy to przy grze, gotowaniu, czy pielęgnowaniu roślin.</p>
+
+                    <div class="quote">
+                        <i>"Nigdy nie umarł bym za swoje przekonania bo mogę się mylić."</i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="fade-in">
+            <p>© <span id="current-year">2024</span> Jakub Nowakowski </p>
+        </footer>
+    </div>
+
+    <script>
+        // Aktualny rok w stopce
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Prosta animacja scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Obserwuj wszystkie sekcje do animacji
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        function copyPhone() {
+        const phone = '+48508329291'; // TWÓJ NUMER
+        
+        if(confirm(`Numer: ${phone}\n\nKliknij OK aby skopiować do schowka`)) {
+            navigator.clipboard.writeText(phone).then(() => {
+                alert('✅ Numer skopiowany!');
+            }).catch(() => {
+                prompt('📱 Skopiuj numer:', phone);
+            });
+        }
+    }
+
+        function copyEmail() {
+            if (!confirm('Email: kuba.ipad@gmail.com\n\nKliknij OK aby skopiować do schowka')) {
+                return;
+            }
+
+            navigator.clipboard.writeText('kuba.ipad@gmail.com').then(function () {
+                alert('✅ Email skopiowany do schowka! 📧');
+            }).catch(function () {
+                // Fallback dla starych przeglądarek
+                prompt('Skopiuj ten email:', 'kuba.ipad@gmail.com');
+            });
+        }
+    </script>
+</body>
+
+</html>
