@@ -68,6 +68,7 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
@@ -308,6 +309,34 @@
             font-style: italic;
             color: #cbd5e1;
         }
+
+        .language-switcher {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .language-switcher .btn {
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            z-index: 1000;
+            pointer-events: auto !important;
+        }
+
+        .language-switcher .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -317,6 +346,10 @@
         <header class="header fade-in">
             <h1>Jakub Nowakowski</h1>
             <p>Junior Python & AI Developer</p>
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <a href="index-en.html" class="btn">🇬🇧 English Version</a>
+            </div>
             <div class="social-links">
                 <a href="mailto:kuba.ipad@gmail.com" title="Kliknij aby wysłać email" onclick="copyEmail()">
                     <i class="fas fa-envelope"></i>
@@ -332,7 +365,6 @@
                 </a>
                 <a href="javascript:void(0)" onclick="copyPhone()" title="Kliknij aby skopiować numer">
                     <i class="fas fa-phone"></i>
-                </a>
                 </a>
 
             </div>
@@ -435,7 +467,7 @@
                 </div>
             </div>
         </section>
-          <!-- Education Section -->
+        <!-- Education Section -->
         <section class="fade-in">
             <h2>Wykształcenie</h2>
             <div class="skills-grid">
@@ -462,6 +494,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Projects Section -->
         <section class="fade-in">
             <h2>Projekty</h2>
@@ -578,7 +611,6 @@
 </body>
 
 </html>
-
 
 
 
