@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub Nowakowski - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            border-color: #60a5fa;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+        }
+
+        .project-card:hover {
+            border-color: #60a5fa;
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .project-card p {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* About Me Section */
+        .about-me {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #475569;
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #60a5fa, #a78bfa);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .about-card p {
+            color: #e2e8f0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .quote {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #60a5fa;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        .language-switcher {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .language-switcher .btn {
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            z-index: 1000;
+            pointer-events: auto !important;
+        }
+
+        .language-switcher .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header fade-in">
+            <h1>Jakub Nowakowski</h1>
+            <p>Junior Python & AI Developer</p>
+
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <a href="index.html" class="btn">🇵🇱 Polish Version</a>
+            </div>
+
+            <div class="social-links">
+                <a href="mailto:kuba.ipad@gmail.com" title="Click to send email" onclick="copyEmail()">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/PercivalLovecraft" target="_blank" title="My GitHub - opens in new tab">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jakub-nowakowski-a302a1376/" target="_blank"
+                    title="My LinkedIn - opens in new tab">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="javascript:void(0)" onclick="copyPhone()" title="Click to copy phone number">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+
+            <style>
+                .social-links a {
+                    position: relative;
+                }
+
+                .social-links a:hover::after {
+                    content: attr(title);
+                    position: absolute;
+                    bottom: -40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                    white-space: nowrap;
+                    z-index: 1000;
+                }
+            </style>
+        </header>
+
+        <!-- Skills Section -->
+        <section class="fade-in">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>C++</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>C#</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Blockchain</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Git</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Linux</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>TensorFlow</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>OpenSSL</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>Unity</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>PHP</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>SQL</h3>
+                </div>
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section class="fade-in">
+            <h2>Language Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🇬🇧 English</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">B2 - Communicative<br>Technical
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3>🇵🇱 Polish</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Native<br>Advanced</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🇩🇪 German</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">A2 - Basic<br>Communication</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🇷🇺 Russian</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">A2 - Basic<br>Communication</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="fade-in">
+            <h2>Education</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🎓 Collegium da Vinci</h3>
+                    <p style="color: #94a3b8; margin-top: 0.5rem;">
+                        <strong>Computer Science</strong><br>
+                        2nd year extramural studies<br>
+                        Specialization: AI<br>
+                        <em>Studies in progress</em>
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3>🎓 Poznań University of Technology</h3>
+                    <p style="color: #94a3b8; margin-top: 0.5rem;">
+                        <strong>Environmental Engineering</strong><br>
+                        3 years of studies<br>
+                        Specialization: Sanitary Installations<br>
+                        <em>Studies not completed</em>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="fade-in">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>MyCoin</h3>
+                    <p>Custom cryptocurrency in C++ with stateless verification and zk-rollup features. Research and
+                        experimental blockchain project.</p>
+                    <a href="https://github.com/PercivalLovecraft/coin" target="_blank" class="btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Forest Wizzard</h3>
+                    <p>2D Unity game in pixel-art style where the hero Artiom escapes from castle dungeons. Academic
+                        project with full gameplay logic and menu.</p>
+                    <a href="https://github.com/PercivalLovecraft/Forest-wizzard" target="_blank" class="btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="fade-in">
+            <h2>About Me</h2>
+            <div class="about-me">
+                <div class="about-card">
+                    <p>I am a technology enthusiast with solid experience in low-level programming (C++) and modern AI
+                        and blockchain solutions. My development path includes both theoretical foundations of
+                        distributed systems and practical implementation of innovative projects.</p>
+
+                    <p>I specialize in creating efficient solutions, from cryptocurrencies to machine learning
+                        algorithms, always with an emphasis on clean code and optimization. In my free time, I
+                        experiment with new frameworks and explore the boundaries of modern computer systems.</p>
+
+                    <p>I am a developer with a passion for technology and nature. After coding hours, I find balance in
+                        the garden, where as a gardening enthusiast I grow my own vegetables and herbs. I love diving
+                        into books, listening to classic hits from the 80s and 90s, and in the evenings I relax with PC
+                        games. In the kitchen, I experiment with new recipes, combining programmer's precision with
+                        chef's creativity. I believe that the best ideas come when the mind is at rest - whether playing
+                        games, cooking, or tending to plants.</p>
+
+                    <div class="quote">
+                        <i>"I would never die for my beliefs because I might be wrong." - Bertrand Russell</i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="fade-in">
+            <p>© <span id="current-year">2024</span> Jakub Nowakowski - Portfolio</p>
+        </footer>
+    </div>
+
+    <script>
+        // Current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Simple scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        function copyPhone() {
+            const phone = '+48508329291';
+
+            if (confirm(`Phone: ${phone}\n\nClick OK to copy to clipboard`)) {
+                navigator.clipboard.writeText(phone).then(() => {
+                    alert('✅ Phone number copied!');
+                }).catch(() => {
+                    prompt('📱 Copy number:', phone);
+                });
+            }
+        }
+
+        function copyEmail() {
+            if (!confirm('Email: kuba.ipad@gmail.com\n\nClick OK to copy to clipboard')) {
+                return;
+            }
+
+            navigator.clipboard.writeText('kuba.ipad@gmail.com').then(function () {
+                alert('✅ Email copied to clipboard! 📧');
+            }).catch(function () {
+                // Fallback for older browsers
+                prompt('Copy this email:', 'kuba.ipad@gmail.com');
+            });
+        }
+    </script>
+</body>
+
+</html>
