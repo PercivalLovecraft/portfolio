@@ -404,15 +404,29 @@
                 <div class="skill-card">
                     <h3>PHP</h3>
                 </div>
-                  <div class="skill-card">
+                <div class="skill-card">
                     <h3>SQL</h3>
                 </div>
-                  <div class="skill-card">
+                <div class="skill-card">
                     <h3>JavaScript</h3>
                 </div>
             </div>
         </section>
-
+        <!-- Languages Section -->
+        <section class="fade-in">
+            <h2>Kompetencje Językowe</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🇬🇧 Angielski</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">B2 - Komunikatywny<br>Techniczny
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h3>🇵🇱 Polski</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Ojczysty<br>Zaawansowany</p>
+                </div>
+            </div>
+        </section>
         <!-- Projects Section -->
         <section class="fade-in">
             <h2>Projekty</h2>
@@ -452,7 +466,8 @@
                         z nowymi frameworkami i badam granice możliwości współczesnych systemów komputerowych.</p>
 
                     <p> Jestem programistą z zamiłowaniem do technologii i natury. Po godzinach
-                        kodowania odnajduję równowagę w ogrodzie, gdzie jako pasjonat ogrodnictwa uprawiam własne warzywa i
+                        kodowania odnajduję równowagę w ogrodzie, gdzie jako pasjonat ogrodnictwa uprawiam własne
+                        warzywa i
                         zioła.
                         Uwielbiam zagłębiać się w książki, słuchać klasycznych hitów z lat 80-90, a
                         wieczorami odpoczywam przy grach PC. W kuchni eksperymentuję z nowymi przepisami,
@@ -501,16 +516,16 @@
         });
 
         function copyPhone() {
-        const phone = '+48508329291'; // TWÓJ NUMER
-        
-        if(confirm(`Numer: ${phone}\n\nKliknij OK aby skopiować do schowka`)) {
-            navigator.clipboard.writeText(phone).then(() => {
-                alert('✅ Numer skopiowany!');
-            }).catch(() => {
-                prompt('📱 Skopiuj numer:', phone);
-            });
+            const phone = '+48508329291'; // TWÓJ NUMER
+
+            if (confirm(`Numer: ${phone}\n\nKliknij OK aby skopiować do schowka`)) {
+                navigator.clipboard.writeText(phone).then(() => {
+                    alert('✅ Numer skopiowany!');
+                }).catch(() => {
+                    prompt('📱 Skopiuj numer:', phone);
+                });
+            }
         }
-    }
 
         function copyEmail() {
             if (!confirm('Email: kuba.ipad@gmail.com\n\nKliknij OK aby skopiować do schowka')) {
@@ -528,6 +543,7 @@
 </body>
 
 </html>
+
 
 
 
